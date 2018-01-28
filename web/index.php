@@ -1,5 +1,5 @@
 <?php
 
-header( 'Location: /visual.html' ) ;
+header( 'Location: /index.html' ) ;
 
 ?>
