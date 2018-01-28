@@ -161,11 +161,11 @@
 
     function asr(evt){
         if(isRecording) {
-            cleanViz();
             Nuance.stopASR();
             $asrLabel.text('RECORD');
             $timerText.html('Timer stopped');
         } else {
+            cleanViz();
             var options = createOptions({
                 userMedia: userMedia,
                 language: $language.val()
