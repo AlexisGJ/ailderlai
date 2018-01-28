@@ -1,5 +1,10 @@
 (function(){
 
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "call_python.php", true);
+    xhttp.send();
+
+
     // UserMedia
 
     var userMedia = undefined;
