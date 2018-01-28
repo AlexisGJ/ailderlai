@@ -5,9 +5,23 @@ $command = 'python ../watson_perso_insights.py "' . $text . '"';
 $python = `$command`;
 echo $python;
 
-$command2 = '"' . $python .'" >> output.txt';
-$python2 = `$command2`;
-echo $python2;
+
+$url = 'http://alexisgj.com/ailderlai/external.php';
+$data = array('text' => $python);
+
+// use key 'http' even if you send the request to https://...
+$options = array(
+    'http' => array(
+        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+        'method'  => 'POST',
+        'content' => http_build_query($data)
+    )
+);
+$context  = stream_context_create($options);
+$result = file_get_contents($url, false, $context);
+if ($result === FALSE) { /* Handle error */ }
+
+var_dump($result);
 
 
 
