@@ -3,7 +3,7 @@ function sendTextMessage() {
   var accountSid = 'ACcc5caacec82143e98b99c2be4dd94c5a';
   var authToken = 'fab5ac701ecb3b4b22cd78d1eac5ed7c';
 
-  var client = require('twilio')(accountSid, authToken);
+  var client = script('twilio')(accountSid, authToken);
 
   client.messages.create({ 
     to: "+14508071504",
