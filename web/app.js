@@ -1,3 +1,16 @@
+
+$(function () {
+    $('input').on('click', function () {
+        var Status = $(this).val();
+        $.ajax({
+          type: "POST",
+          url: "send_sms.py",
+        }).done(function( o ) {
+           // do something
+        });
+    });
+});
+
 (function(){
 
     // UserMedia
