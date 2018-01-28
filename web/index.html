@@ -33,14 +33,6 @@
 
         <div class='' style='min-height:400px;padding:0px;'>
 
-            <ul class="nav nav-tabs nav-justified" role="tablist">
-                <li role="presentation" class="active"><a role="tab" data-toggle="tab" href="#credentials"><i class='fa fa-key'></i> Credentials & Settings</a></li>
-                <li role="presentation"><a role="tab" data-toggle="tab" href="#text-nlu">① Text NLU</a> <div class='status-indicator'>&nbsp;</div></li>
-                <li role="presentation"><a role="tab" data-toggle="tab" href="#speech-nlu">② Speech Recognition (w/ NLU)</a> <div class='status-indicator'>&nbsp;</div></li>
-                <li role="presentation"><a role="tab" data-toggle="tab" href="#text-to-speech">③ Text To Speech</a> <div class='status-indicator'>&nbsp;</div></li>
-                <li role="presentation"><a role="tab" data-toggle="tab" href="#logs"><i class='fa fa-database'></i> Logs</a></li>
-            </ul>
-
             <div class="tab-content">
 
                 <!--  CREDENTIALS -->
@@ -116,20 +108,11 @@
                 <!--  ASR / NLU -->
                 <div role="tabpanel" id="speech-nlu" class='col-md-12 tab-pane fade'>
                     <div id="asr" class='panel panel-default'>
-                        <div class='panel-heading'>
-                            <strong>Speech Recognition with Natural Language Understanding (optional, using the Context Tag defined)</strong>
-                        </div>
                         <div class='panel-body'>
-                            <div class="checkbox">
-                                <label>
-                                    <input id="use_nlu" type="checkbox" checked/> Enable Natural Language Understanding (+ Speech Recognition Customization)
-                                </label>
-                            </div>
-                            <canvas id="asr_viz" height="220" ></canvas>
-                            <br/>
-                            <!-- <button id='asr_go' type='button' class='btn btn-primary btn-block'>
-                                <i class='fa fa-microphone'></i> <span id='asr_label'>RECORD</span>
-                            </button> -->
+                            <div id="timer_text">Timer stopped</div>
+                            <input style="display:none" id="use_nlu" type="checkbox" checked/> Enable Natural Language Understanding (+ Speech Recognition Customization)
+                            <canvas style="display:none" id="asr_viz" height="220" ></canvas>
+                            </br>
                             <button type="button" id="asr_go" class="btn-block btn btn-danger btn-circle btn-xl">
                                 <i class="glyphicon glyphicon-heart"></i>
                             </button>

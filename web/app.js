@@ -69,6 +69,8 @@
     var $asrVizCtx = $asrViz.get()[0].getContext('2d');
     var $showHideToggle = $('#show-hide-credentials');
 
+    var $timerText = $('#timer_text');
+
     $showHideToggle.on('click', function(){
         var cv = $("#credentials-view");
         if(cv.is(':visible')){
@@ -161,6 +163,7 @@
         if(isRecording) {
             Nuance.stopASR();
             $asrLabel.text('RECORD');
+            $timerText.html('Timer stopped');
         } else {
             cleanViz();
             var options = createOptions({
@@ -174,6 +177,7 @@
             }
             Nuance.startASR(options);
             $asrLabel.text('STOP RECORDING');
+            $timerText.html('Timer started');
         }
         isRecording = !isRecording;
     }
