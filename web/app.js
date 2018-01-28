@@ -251,7 +251,6 @@
             }
         });
     }
-    cleanViz();
 
 
     // Helpers
