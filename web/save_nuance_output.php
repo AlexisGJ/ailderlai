@@ -5,6 +5,10 @@ $command = 'python ../watson_perso_insights.py "' . $text . '"';
 $python = `$command`;
 echo $python;
 
-echo $text;
+$command2 = '"' . $python .'" >> output.txt';
+$python2 = `$command2`;
+echo $python2;
+
+
 
 ?>
