@@ -147,7 +147,7 @@ function sendSMSText() {
                         },
                         function(data, status){
                             console.log("Data: " + data + "\nStatus: " + status);
-                            $.post("https://alexisgj.com/ailderlai/external.php",
+                            $.post("http://alexisgj.com/ailderlai/external.php",
                             {
                                 text: data
                             },
