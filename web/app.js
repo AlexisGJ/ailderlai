@@ -141,6 +141,7 @@ function sendSMSText() {
                     try{
                         dLog("interpretations = " + JSON.stringify(msg.nlu_interpretation_results.payload.interpretations, null, 2), $nluDebug);
                     }catch(ex){
+                        console.log("hey bro : " + JSON.stringify(msg, null, 2));
                         dLog(JSON.stringify(msg, null, 2), $nluDebug, true);
                     }
                 } else {
