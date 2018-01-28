@@ -1,8 +1,9 @@
 <?php
 
 $text = htmlspecialchars($_POST["text"]);
-chmod("personality.txt", 0777);
-file_put_contents("personality.txt",$text);
+$command = 'python ../watson_perso_insights.py "' . $text . '"';
+$python = `$command`;
+echo $python;
 
 echo $text;
 
