@@ -1,14 +1,16 @@
 html, body {
-  padding: 50px 20px;
+  padding: 20px;
   margin: 0;
+  text-align: center;
 }
 
 #logo {
-  font-family: 'Lobster', cursive;
-  font-size: 50px;
-  text-align: center;
   position: relative;
   width: 100%;
+  height: 150px;
+  background: url('logo_white.png') center center no-repeat;
+  background-size: auto 100%;
+  margin-bottom: 20px;
 }
 
 #asr_go {
@@ -23,8 +25,12 @@ html, body {
   border: none;
 }
 
-body {
-  text-align: center;
+#emergency_button {
+  padding: 5px 10px;
+  border-radius: 3px;
+  background: #fa8a86;
+  border: none;
+  outline: none;
 }
 
 h2
