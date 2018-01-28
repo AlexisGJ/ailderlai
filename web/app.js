@@ -1,8 +1,14 @@
-(function(){
+
+function sendSMSText() {
 
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "call_python.php", true);
+    xhttp.open("GET", "call_python.php" , true);
     xhttp.send();
+
+}
+
+
+(function(){
 
 
     // UserMedia
@@ -111,6 +117,7 @@
             } else if (msg.result_type == "NDSP_ASR_APP_CMD") {
                 if(msg.result_format === "nlu_interpretation_results") {
                     try{
+                        console.log("hey bro : " +JSON.stringify(msg.nlu_interpretation_results.payload.interpretations);
                         dLog("interpretations = " + JSON.stringify(msg.nlu_interpretation_results.payload.interpretations, null, 2), $asrDebug);
                     }catch(ex){
                         dLog(JSON.stringify(msg, null, 2), $asrDebug, true);
