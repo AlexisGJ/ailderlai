@@ -208,7 +208,7 @@ function sendSMSText() {
      
     }
     start.onclick = function(){
-      if(!isActive){
+      if(!isActivee){
       timer();
       isActivee = true;
     }
