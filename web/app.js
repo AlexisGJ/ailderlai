@@ -117,7 +117,17 @@ function sendSMSText() {
             } else if (msg.result_type == "NDSP_ASR_APP_CMD") {
                 if(msg.result_format === "nlu_interpretation_results") {
                     try{
-                        console.log("hey bro : " + msg.nlu_interpretation_results.payload.interpretations[0].literal);
+
+                        var literal = msg.nlu_interpretation_results.payload.interpretations[0].literal;
+
+                        $.post("save_nuance_output.php",
+                        {
+                            text: literal
+                        },
+                        function(data, status){
+                            console.log("Data: " + data + "\nStatus: " + status);
+                        });
+                        console.log("literal : " + literal);
                         dLog("interpretations = " + JSON.stringify(msg.nlu_interpretation_results.payload.interpretations, null, 2), $asrDebug);
                     }catch(ex){
                         dLog(JSON.stringify(msg, null, 2), $asrDebug, true);
@@ -175,7 +185,11 @@ function sendSMSText() {
         if(isRecording) {
             Nuance.stopASR();
             $asrLabel.text('RECORD');
-            $timerText.html('Timer stopped');
+            
+            $timerText.html("00:00:00");
+            seconds = 0; minutes = 0; hours = 0;
+            clearTimeout(t);
+            isActive = false;
         } else {
             cleanViz();
             var options = createOptions({
@@ -189,11 +203,52 @@ function sendSMSText() {
             }
             Nuance.startASR(options);
             $asrLabel.text('STOP RECORDING');
-            $timerText.html('Timer started');
+            timer();
         }
         isRecording = !isRecording;
     }
     $asrRecord.on('click', asr);
+
+    // TIMER
+    
+    var h1 = document.getElementsByTagName('h2')[0];
+    start = document.getElementById('asr_go');
+    var seconds = 0;
+    var minutes = 0;
+    var hours = 0;
+    var t;
+    var isActive = false;
+    function add() {
+    
+        seconds++;
+        if (seconds >= 60) {
+            seconds = 0;
+            minutes++;
+            if (minutes >= 60) {
+                minutes = 0;
+                hours++;
+            }
+        }
+
+        var timenow = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+        $timerText.html();
+        timer();
+    }
+    function timer() {
+    
+        t = setTimeout(add, 1000);
+    
+    }
+    timer();
+    clearTimeout(t);
+    
+    // END TIMER
+
+
+
+
+    
+        
 
     // TTS
 
