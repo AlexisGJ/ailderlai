@@ -1,6 +1,8 @@
 
   var values = [];
   var graph = document.querySelector("#idGraph");
+  var idMyChart = document.querySelector("#myChart");
+  console.log(idMyChart);
 
 for (var index = 0; index < 10; index++) {
   values.push(Math.floor(Math.random()*100));
@@ -9,14 +11,14 @@ for (var index = 0; index < 10; index++) {
     newDiv.classList.add("stat-text");
     graph.appendChild(newDiv);
 }
-var ctx = document.getElementById("myChart").getContext('2d');
+var ctx = idMyChart.getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
         datasets: [{
             label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
+            data: values,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
