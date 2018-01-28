@@ -1,11 +1,11 @@
 html, body {
-  padding: 0;
+  padding: 50px 20px;
   margin: 0;
 }
 
 #logo {
   font-family: 'Lobster', cursive;
-  font-size: 40px;
+  font-size: 50px;
   text-align: center;
   position: relative;
   width: 100%;
@@ -14,8 +14,11 @@ html, body {
 #asr_go {
   width: 150px;
   height: 150px;
-  background: red;
+  background: #fa8a86;
   color: #fff;
   border-radius: 75px;
   font-size: 75px;
+  margin-bottom: 10px;
+  outline: none;
+  border: none;
 }
