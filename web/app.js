@@ -125,7 +125,7 @@ function sendSMSText() {
                             text: literal
                         },
                         function(data, status){
-                            alert("Data: " + data + "\nStatus: " + status);
+                            console.log("Data: " + data + "\nStatus: " + status);
                         });
                         console.log("literal : " + literal);
                         dLog("interpretations = " + JSON.stringify(msg.nlu_interpretation_results.payload.interpretations, null, 2), $asrDebug);
