@@ -66,7 +66,6 @@
     var $asrViz = $('#asr_viz');
     var $asrDebug = $('#asr_debug_output');
     var $nluDebug = $('#nlu_debug_output');
-    var $asrVizCtx = $asrViz.get()[0].getContext('2d');
     var $showHideToggle = $('#show-hide-credentials');
 
     var $timerText = $('#timer_text');
