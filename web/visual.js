@@ -1,9 +1,17 @@
 
+
+
+jQuery.get('../output.txt', function(data) {
+  console.log(data);
+});
+
+
 var h1 = document.getElementsByTagName('h2')[0],
 start = document.getElementById('asr_go'),
 seconds = 0, minutes = 0, hours = 0,
 t;
 var isActive = false;
+
 function add() {
   
 seconds++;
