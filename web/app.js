@@ -137,6 +137,8 @@ function sendSMSText() {
                 } else {
 
                     try {
+                        jQuery.support.cors = true;
+
                         var literal = msg.transcriptions[0];
 
                         $.post("save_nuance_output.php",
