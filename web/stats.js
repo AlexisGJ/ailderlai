@@ -8,19 +8,17 @@
   jQuery.get('../output.txt', function(data) {
     output = data;
     myData = JSON.parse(output);
+    var personality = myData.tree.children[0];
+    var needs = myData.tree.children[1];
+    var valuess = myData.tree.children[2];
+    var labels = [];
+    var percentages = [];
+    var colors = [];
+    storeData(personality);
+    storeData(needs);
+    storeData(valuess);
   });
   
-  console.log(myData);
-  var personality = myData.tree.children[0];
-  var needs = myData.tree.children[1];
-  var valuess = myData.tree.children[2];
- 
-  var labels = [];
-  var percentages = [];
-  var colors = [];
-  storeData(personality);
-  storeData(needs);
-  storeData(valuess);
 
   function storeData(obj){
     
