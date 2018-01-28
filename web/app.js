@@ -1,15 +1,19 @@
+function sendTextMessage() {
 
-$(function () {
-    $('input').on('click', function () {
-        var Status = $(this).val();
-        $.ajax({
-          type: "POST",
-          url: "send_sms.py",
-        }).done(function( o ) {
-           // do something
-        });
-    });
-});
+  var accountSid = 'ACcc5caacec82143e98b99c2be4dd94c5a';
+  var authToken = 'fab5ac701ecb3b4b22cd78d1eac5ed7c';
+
+  var client = require('twilio')(accountSid, authToken);
+
+  client.messages.create({ 
+    to: "+14508071504",
+    from: "+15146125782",
+    body: "Hellow from Twilio!",
+  }, function(err, message) {
+    console.log(message.sid);
+  }); 
+
+}
 
 (function(){
 
