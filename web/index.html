@@ -27,7 +27,7 @@
 <body>
 
 
-    <div id="content" class='container'>
+    <div id="content" >
         <!--  HEADER -->
         <div class="">AIlderlAI</div>
 
@@ -114,20 +114,18 @@
                 </div>
 
                 <!--  ASR / NLU -->
-                <div role="tabpanel" id="speech-nlu" class='col-md-12 tab-pane fade'>
-                    <div id="asr" class='panel panel-default'>
-                        <div class='panel-body'>
-                            <div id="timer_text">Timer stopped</div>
-                            <input style="display:none" id="use_nlu" type="checkbox" checked/>
-                            <canvas style="display:none" id="asr_viz" height="220" ></canvas>
-                            <br/>
-                            <!-- <button id='asr_go' type='button' class='btn btn-primary btn-block'>
-                                <i class='fa fa-microphone'></i> <span id='asr_label'>RECORD</span>
-                            </button> -->
-                            <button type="button" id="asr_go" class="btn-block btn btn-danger btn-circle btn-xl">
-                                <i class="glyphicon glyphicon-heart"></i>
-                            </button>
-                        </div>
+                <div id="speech-nlu">
+                    <div id="asr">
+                        <input style="display:none" id="use_nlu" type="checkbox" checked/>
+                        <canvas style="display:none" id="asr_viz" height="220" ></canvas>
+                        <br/>
+                        <!-- <button id='asr_go' type='button' class='btn btn-primary btn-block'>
+                            <i class='fa fa-microphone'></i> <span id='asr_label'>RECORD</span>
+                        </button> -->
+                        <button type="button" id="asr_go">o</button>
+
+                        <div id="timer_text">Timer stopped</div>
+                        
                         <div id='asr_debug_output' class='panel-body' ></div>
                     </div>
                 </div>

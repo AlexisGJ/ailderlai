@@ -1,26 +1,12 @@
-.btn-circle.btn-xl {
-  width: 40%;
-  height: 60%;
-  padding: 10px 16px;
-  border-radius: 100%;
-  font-size: 200px;
-  line-height: 1.33;
+html, body {
+  padding: 0;
+  margin: 0;
 }
 
-.btn-circle {
-  width: 60%;
-  height: 60%;
-  padding: 6px 0px;
-  border-radius: 100%;
-  text-align: center;
-  font-size: 12px;
-  line-height: 1.42857;
-}
-
-.btn-big {
-  font-size:30px;
-}
-.big-text {
-  font-size: 40px;
-  height: 100%;
+#asr_go {
+  width: 50px;
+  height: 50px;
+  background: red;
+  color: #fff;
+  border-radius: 50px;
 }
