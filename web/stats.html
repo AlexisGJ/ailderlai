@@ -3,11 +3,11 @@
   <head>
     <title>AIlderly</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="visual.css">
+    <link rel="stylesheet" href="stats.css">
   </head>
   <body>
       <nav class="navbar navbar-inverse">
-          <div class="container">
+          <div id="idContainer" class="container">
             <div class="navbar-header">
               <a href="#" class="navbar-brand big-text">A.IDerly</a>
             </div>
@@ -22,27 +22,15 @@
         </nav>
     <div class="container">
       <div class="jumbotron">
-      
-        
-        <form class="form-horizontal">
-          <div class="form-group">
-          </div>
-          <button type="button" id="asr_go" class="btn-block btn btn-danger btn-circle btn-xl">
-            <i class="glyphicon glyphicon-heart"></i>
-          </button>
-          <h1>How are you doing today?</h1>
-          <input type="text" class="form-control big-text" placeholder="I'm fine" id="usr">
-          <div class="form-group">
-            <a href="" class="btn btn-danger btn-big col-lg-4">Family mode</a>
-            <a href="" class="btn btn-danger btn-big col-lg-4">Friends mode</a>
-            <a href="" class="btn btn-danger btn-big col-lg-4">Specific mode</a>
-          </div>
-        </form>
-
+        <div id="idGraph"></div>
       </div>
-
-
     </div>
-  
+  <script src="stats.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+  <canvas id="myChart"></canvas>
+  <canvas id="line-chart" width="800" height="450"></canvas>
+
+
   </body>
 </html>
