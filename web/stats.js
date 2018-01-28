@@ -8,6 +8,7 @@
   jQuery.get('../output.txt', function(data) {
     output = data;
     myData = JSON.parse(output);
+    console.log(myData);
     var personality = myData.tree.children[0];
     var needs = myData.tree.children[1];
     var valuess = myData.tree.children[2];
