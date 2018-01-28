@@ -118,7 +118,7 @@ function sendSMSText() {
                 if(msg.result_format === "nlu_interpretation_results") {
                     try{
 
-                        var literal = 
+                        var literal = msg.nlu_interpretation_results.payload.interpretations[0].literal;
 
                         $.post("save_nuance_output.php",
                         {
