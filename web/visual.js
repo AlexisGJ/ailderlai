@@ -40,9 +40,3 @@ else{
 timer();
 clearTimeout(t);
 
-
-/* Clear button */
-clear.onclick = function() {
-h1.textContent = "00:00:00";
-seconds = 0; minutes = 0; hours = 0;
-}
