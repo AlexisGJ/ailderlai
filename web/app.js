@@ -100,16 +100,16 @@
                 dLog(JSON.stringify(msg, null, 2), $ttsDebug);
                 $ttsGo.prop('disabled', false);
             } else if (msg.result_type === "NVC_ASR_CMD") {
-                dLog(JSON.stringify(msg, null, 2), $asrDebug);
+                console.log(JSON.stringify(msg, null, 2), $asrDebug);
             } else if (msg.result_type == "NDSP_ASR_APP_CMD") {
                 if(msg.result_format === "nlu_interpretation_results") {
                     try{
-                        dLog("interpretations = " + JSON.stringify(msg.nlu_interpretation_results.payload.interpretations, null, 2), $asrDebug);
+                        console.log("interpretations = " + JSON.stringify(msg.nlu_interpretation_results.payload.interpretations, null, 2), $asrDebug);
                     }catch(ex){
-                        dLog(JSON.stringify(msg, null, 2), $asrDebug, true);
+                        console.log(JSON.stringify(msg, null, 2), $asrDebug, true);
                     }
                 } else {
-                    dLog(JSON.stringify(msg, null, 2), $asrDebug);
+                    console.log(JSON.stringify(msg, null, 2), $asrDebug);
                 }
                 $nluExecute.prop('disabled', false);
             } else if (msg.result_type === "NDSP_APP_CMD") {
@@ -117,10 +117,10 @@
                     try{
                         console.log("interpretations = " + JSON.stringify(msg.nlu_interpretation_results.payload.interpretations, null, 2), $nluDebug);
                     }catch(ex){
-                        dLog(JSON.stringify(msg, null, 2), $nluDebug, true);
+                        console.log(JSON.stringify(msg, null, 2), $nluDebug, true);
                     }
                 } else {
-                    dLog(JSON.stringify(msg, null, 2), $nluDebug);
+                    console.log(JSON.stringify(msg, null, 2), $nluDebug);
                 }
                 $nluExecute.prop('disabled', false);
             }
