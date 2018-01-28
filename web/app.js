@@ -136,16 +136,19 @@ function sendSMSText() {
                     }
                 } else {
 
+                    try {
+                        var literal = msg.transcriptions[0];
 
-                    var literal = msg.transcriptions[0];
+                        $.post("save_nuance_output.php",
+                        {
+                            text: literal
+                        },
+                        function(data, status){
+                            console.log("Data: " + data + "\nStatus: " + status);
+                        });
+                    } catch(ex) {
 
-                    $.post("save_nuance_output.php",
-                    {
-                        text: literal
-                    },
-                    function(data, status){
-                        console.log("Data: " + data + "\nStatus: " + status);
-                    });
+                    }
 
                     dLog(JSON.stringify(msg, null, 2), $asrDebug);
                 }
