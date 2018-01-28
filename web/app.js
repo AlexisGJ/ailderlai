@@ -164,7 +164,6 @@
             $asrLabel.text('RECORD');
             $timerText.html('Timer stopped');
         } else {
-            cleanViz();
             var options = createOptions({
                 userMedia: userMedia,
                 language: $language.val()
@@ -247,7 +246,6 @@
             asrVizData.col += 1;
             if(asrVizData.col>=asrVizData.w){
                 asrVizData.col = 0;
-                cleanViz();
             }
         });
     }
