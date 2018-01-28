@@ -69,6 +69,8 @@
     var $asrVizCtx = $asrViz.get()[0].getContext('2d');
     var $showHideToggle = $('#show-hide-credentials');
 
+    var $timerText = $('#timer_text');
+
     $showHideToggle.on('click', function(){
         var cv = $("#credentials-view");
         if(cv.is(':visible')){
@@ -80,7 +82,7 @@
     });
 
     // Default options for all transactions
-// Needed =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
     var defaultOptions = {
         onopen: function() {
             console.log("Websocket Opened");
@@ -100,27 +102,27 @@
                 dLog(JSON.stringify(msg, null, 2), $ttsDebug);
                 $ttsGo.prop('disabled', false);
             } else if (msg.result_type === "NVC_ASR_CMD") {
-                console.log(JSON.stringify(msg, null, 2), $asrDebug);
+                dLog(JSON.stringify(msg, null, 2), $asrDebug);
             } else if (msg.result_type == "NDSP_ASR_APP_CMD") {
                 if(msg.result_format === "nlu_interpretation_results") {
                     try{
-                        console.log("interpretations = " + JSON.stringify(msg.nlu_interpretation_results.payload.interpretations, null, 2), $asrDebug);
+                        dLog("interpretations = " + JSON.stringify(msg.nlu_interpretation_results.payload.interpretations, null, 2), $asrDebug);
                     }catch(ex){
-                        console.log(JSON.stringify(msg, null, 2), $asrDebug, true);
+                        dLog(JSON.stringify(msg, null, 2), $asrDebug, true);
                     }
                 } else {
-                    console.log(JSON.stringify(msg, null, 2), $asrDebug);
+                    dLog(JSON.stringify(msg, null, 2), $asrDebug);
                 }
                 $nluExecute.prop('disabled', false);
             } else if (msg.result_type === "NDSP_APP_CMD") {
                 if(msg.result_format === "nlu_interpretation_results") {
                     try{
-                        console.log("interpretations = " + JSON.stringify(msg.nlu_interpretation_results.payload.interpretations, null, 2), $nluDebug);
+                        dLog("interpretations = " + JSON.stringify(msg.nlu_interpretation_results.payload.interpretations, null, 2), $nluDebug);
                     }catch(ex){
-                        console.log(JSON.stringify(msg, null, 2), $nluDebug, true);
+                        dLog(JSON.stringify(msg, null, 2), $nluDebug, true);
                     }
                 } else {
-                    console.log(JSON.stringify(msg, null, 2), $nluDebug);
+                    dLog(JSON.stringify(msg, null, 2), $nluDebug);
                 }
                 $nluExecute.prop('disabled', false);
             }
@@ -132,7 +134,7 @@
             $([$nluExecute,$ttsGo]).prop('disabled', false);
         }
     };
-//needed =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
     function createOptions(overrides) {
         var options = Object.assign(overrides, defaultOptions);
         options.appId = $appId.val();
@@ -142,13 +144,26 @@
         return options;
     }
 
+    // Text NLU
+
+    function textNlu(evt){
+        var options = createOptions({
+            text: $("#nlu_text").val(),
+            tag: $nluTag.val(),
+            language: $language.val()
+        });
+        $nluExecute.prop('disabled', true);
+        Nuance.startTextNLU(options);
+    }
+    $nluExecute.on('click', textNlu);
 
     // ASR / NLU
-//NEEDED -=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--==-=-=-
+
     function asr(evt){
         if(isRecording) {
             Nuance.stopASR();
             $asrLabel.text('RECORD');
+            $timerText.html('Timer stopped');
         } else {
             cleanViz();
             var options = createOptions({
@@ -162,14 +177,26 @@
             }
             Nuance.startASR(options);
             $asrLabel.text('STOP RECORDING');
+            $timerText.html('Timer started');
         }
         isRecording = !isRecording;
     }
     $asrRecord.on('click', asr);
 
+    // TTS
+
+    function tts(evt){
+        var options = createOptions({
+            language: $language.val(),
+            voice: TTS_VOICE,
+            text: $ttsText.val()
+        });
+        $ttsGo.prop('disabled', true);
+        Nuance.playTTS(options);
+    }
+    $ttsGo.on('click', tts);
 
     // ASR volume visualization
-// NEEDED =-=-=-=-=-=-=-=-=-=-=-=-=-=--==--=-=-==-=-=-=-=-=-=-=-=-=-=
 
     window.requestAnimFrame = (function(){
         return  window.requestAnimationFrame       ||
@@ -179,10 +206,6 @@
                     window.setTimeout(callback, 1000 / 60);
                 };
     })();
-
-
-
-// NEEDED =-=-=-=-=-=-=-=-=-=-=-=-=-=--==--=-=-==-=-=-=-=-=-=-=-=-=-=
 
     var asrVizData = {};
     function cleanViz(){
@@ -203,10 +226,6 @@
         $asrVizCtx.stroke();
         asrVizData.col = 0;
     }
-
-
-
-// NEEDED =-=-=-=-=-=-=-=-=-=-=-=-=-=--==--=-=-==-=-=-=-=-=-=-=-=-=-=
 
     function viz(amplitudeArray){
         var h = asrVizData.h;
@@ -237,7 +256,7 @@
 
 
     // Helpers
-// Needed =-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
     function setCredentialFields() {
         $url.val(localStorage.getItem("url") || URL || '');
         $appId.val(localStorage.getItem("app_id") || APP_ID || '');
@@ -267,7 +286,6 @@
         setCredentialFields();
     });
 
-// NEEDED =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     var dLog = function dLog(msg, logger, failure){
         var html = '<pre>'+msg+'</pre>';
         var time = new Date().toISOString();
@@ -279,7 +297,6 @@
         logger.prepend(html);
     };
 
-// NEEDED =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     var LOG = function LOG(msg, type){
         var html = "<pre>"+JSON.stringify(msg, null, 2)+"</pre>";
         var time = new Date().toISOString();
