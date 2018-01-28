@@ -117,7 +117,17 @@ function sendSMSText() {
             } else if (msg.result_type == "NDSP_ASR_APP_CMD") {
                 if(msg.result_format === "nlu_interpretation_results") {
                     try{
-                        console.log("hey bro : " + msg.nlu_interpretation_results.payload.interpretations[0].literal);
+
+                        var literal = 
+
+                        $.post("save_nuance_output.php",
+                        {
+                            text: literal
+                        },
+                        function(data, status){
+                            alert("Data: " + data + "\nStatus: " + status);
+                        });
+                        console.log("literal : " + literal);
                         dLog("interpretations = " + JSON.stringify(msg.nlu_interpretation_results.payload.interpretations, null, 2), $asrDebug);
                     }catch(ex){
                         dLog(JSON.stringify(msg, null, 2), $asrDebug, true);
