@@ -1,8 +1,14 @@
-(function(){
+
+function sendSMSText() {
 
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "call_python.php", true);
+    xhttp.open("GET", "call_python.php" , true);
     xhttp.send();
+
+}
+
+
+(function(){
 
 
     // UserMedia

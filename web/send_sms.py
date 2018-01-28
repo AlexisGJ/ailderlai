@@ -11,4 +11,4 @@ client = Client(account_sid, auth_token)
 client.api.account.messages.create(
    to="+14388635345",
    from_="+15146125782",
-   body="Ege lache le cell a tris")
+   body="Hi, I have an emergency right now.")
