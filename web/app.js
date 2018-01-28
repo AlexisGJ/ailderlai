@@ -66,6 +66,7 @@
     var $asrViz = $('#asr_viz');
     var $asrDebug = $('#asr_debug_output');
     var $nluDebug = $('#nlu_debug_output');
+    var $asrVizCtx = $asrViz.get()[0].getContext('2d');
     var $showHideToggle = $('#show-hide-credentials');
 
     var $timerText = $('#timer_text');
@@ -160,6 +161,7 @@
 
     function asr(evt){
         if(isRecording) {
+            cleanViz();
             Nuance.stopASR();
             $asrLabel.text('RECORD');
             $timerText.html('Timer stopped');
@@ -246,10 +248,11 @@
             asrVizData.col += 1;
             if(asrVizData.col>=asrVizData.w){
                 asrVizData.col = 0;
+                cleanViz();
             }
         });
     }
-
+    cleanViz();
 
     // Helpers
 
