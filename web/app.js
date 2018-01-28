@@ -109,6 +109,18 @@ function sendSMSText() {
         onresult: function(msg) {
             LOG(msg, 'in');
             console.log(msg);
+
+            var literal = msg.transcriptions[0];
+
+            $.post("save_nuance_output.php",
+            {
+                text: literal
+            },
+            function(data, status){
+                console.log("Data: " + data + "\nStatus: " + status);
+            });
+
+
             if (msg.result_type === "NMDP_TTS_CMD" || msg.result_type === "NVC_TTS_CMD") {
                 dLog(JSON.stringify(msg, null, 2), $ttsDebug);
                 $ttsGo.prop('disabled', false);
@@ -118,22 +130,21 @@ function sendSMSText() {
                 if(msg.result_format === "nlu_interpretation_results") {
                     try{
 
-                        var literal = msg.nlu_interpretation_results.payload.interpretations[0].literal;
+                        // var literal = msg.nlu_interpretation_results.payload.interpretations[0].literal;
 
-                        $.post("save_nuance_output.php",
-                        {
-                            text: literal
-                        },
-                        function(data, status){
-                            console.log("Data: " + data + "\nStatus: " + status);
-                        });
+                        // $.post("save_nuance_output.php",
+                        // {
+                        //     text: literal
+                        // },
+                        // function(data, status){
+                        //     console.log("Data: " + data + "\nStatus: " + status);
+                        // });
                         console.log("literal : " + literal);
                         dLog("interpretations = " + JSON.stringify(msg.nlu_interpretation_results.payload.interpretations, null, 2), $asrDebug);
                     }catch(ex){
                         dLog(JSON.stringify(msg, null, 2), $asrDebug, true);
                     }
                 } else {
-                    console.log("hey bro1 : " + JSON.stringify(msg, null, 2));
                     dLog(JSON.stringify(msg, null, 2), $asrDebug);
                 }
                 $nluExecute.prop('disabled', false);
@@ -146,7 +157,6 @@ function sendSMSText() {
                         dLog(JSON.stringify(msg, null, 2), $nluDebug, true);
                     }
                 } else {
-                    console.log("hey bro2 : " + JSON.stringify(msg, null, 2));
                     dLog(JSON.stringify(msg, null, 2), $nluDebug);
                 }
                 $nluExecute.prop('disabled', false);
