@@ -117,6 +117,7 @@
                 <div role="tabpanel" id="speech-nlu" class='col-md-12 tab-pane fade'>
                     <div id="asr" class='panel panel-default'>
                         <div class='panel-body'>
+                            <div id="timer_text">Timer stopped</div>
                             <input style="display:none" id="use_nlu" type="checkbox" checked/>
                             <canvas style="display:none" id="asr_viz" height="220" ></canvas>
                             <br/>
@@ -130,6 +131,8 @@
                         <div id='asr_debug_output' class='panel-body' ></div>
                     </div>
                 </div>
+
+
 
                 <!--  TTS -->
                 <div role="tabpanel" id="text-to-speech" class='col-md-12 tab-pane fade' style="display:none">
