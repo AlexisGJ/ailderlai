@@ -11,8 +11,6 @@
     <!--  LIBRARY DEPS -->
     <link href="lib/bootstrap.min.css" rel="stylesheet">
     <link href='lib/font-awesome.min.css' rel="stylesheet">
-    <link href='styles/style.css' rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet" type="text/css">
 
     <script src="lib/jquery.min.js"></script>
     <script src="lib/bootstrap.min.js"></script>
@@ -24,6 +22,7 @@
 
     <!-- CUSTOM SOURCES -->
     <link rel="stylesheet" href="visual.css">
+
 </head>
 <body>
 
@@ -141,8 +140,11 @@
                             </div>
                             <canvas id="asr_viz" height="220" ></canvas>
                             <br/>
-                            <button id='asr_go' type='button' class='btn btn-primary btn-block'>
+                            <!-- <button id='asr_go' type='button' class='btn btn-primary btn-block'>
                                 <i class='fa fa-microphone'></i> <span id='asr_label'>RECORD</span>
+                            </button> -->
+                            <button type="button" id="asr_go" class="btn-block btn btn-danger btn-circle btn-xl">
+                                <i class="glyphicon glyphicon-heart"></i>
                             </button>
                         </div>
                         <div id='asr_debug_output' class='panel-body' ></div>
