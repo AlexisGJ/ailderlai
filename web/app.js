@@ -110,16 +110,6 @@ function sendSMSText() {
             LOG(msg, 'in');
             console.log(msg);
 
-            var literal = msg.transcriptions[0];
-
-            $.post("save_nuance_output.php",
-            {
-                text: literal
-            },
-            function(data, status){
-                console.log("Data: " + data + "\nStatus: " + status);
-            });
-
 
             if (msg.result_type === "NMDP_TTS_CMD" || msg.result_type === "NVC_TTS_CMD") {
                 dLog(JSON.stringify(msg, null, 2), $ttsDebug);
@@ -145,6 +135,18 @@ function sendSMSText() {
                         dLog(JSON.stringify(msg, null, 2), $asrDebug, true);
                     }
                 } else {
+
+
+                    var literal = msg.transcriptions[0];
+
+                    $.post("save_nuance_output.php",
+                    {
+                        text: literal
+                    },
+                    function(data, status){
+                        console.log("Data: " + data + "\nStatus: " + status);
+                    });
+
                     dLog(JSON.stringify(msg, null, 2), $asrDebug);
                 }
                 $nluExecute.prop('disabled', false);
