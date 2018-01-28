@@ -1,8 +1,6 @@
 <?php
 
-$text = htmlspecialchars($_POST["value"]);
-
-$python = `python send_sms.py "` . $text . `"`;
+$python = `python send_sms.py`;
 echo $python;
 
 ?>
