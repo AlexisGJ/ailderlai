@@ -211,10 +211,12 @@ function sendSMSText() {
 
     // TIMER
     
-    var h1 = document.getElementsByTagName('h2')[0],
-    start = document.getElementById('asr_go'),
-    seconds = 0, minutes = 0, hours = 0,
-    t;
+    var h1 = document.getElementsByTagName('h2')[0];
+    start = document.getElementById('asr_go');
+    var seconds = 0;
+    var minutes = 0;
+    var hours = 0;
+    var t;
     var isActive = false;
     function add() {
     
@@ -228,7 +230,8 @@ function sendSMSText() {
             }
         }
 
-        $timerText.html(hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+        var timenow = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+        $timerText.html();
         timer();
     }
     function timer() {
