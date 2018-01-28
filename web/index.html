@@ -29,20 +29,7 @@
 
     <div id="content" class='container'>
         <!--  HEADER -->
-        <nav class="navbar navbar-inverse">
-            <div class="container">
-                <div class="navbar-header">
-                    <a href="#" class="navbar-brand big-text">A.IDerly</a>
-                </div>
-                <ul class="nav navbar-nav">
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Home</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Call Emergency</a></li>
-                </ul>
-            </div>
-        </nav>
+        <div id="logo">AI lderl AI</div>
 
         <div class='' style='min-height:400px;padding:0px;'>
 
@@ -57,7 +44,7 @@
             <div class="tab-content">
 
                 <!--  CREDENTIALS -->
-                <div id="credentials" role="tabpanel" class='col-md-12 tab-pane fade in active'>
+                <div id="credentials" role="tabpanel" class='col-md-12 tab-pane fade in active' style="display:none">
                     <div class='panel panel-default'>
                         <div class='panel-heading'>
                             <strong>Connection Parameters</strong>
@@ -152,7 +139,7 @@
                 </div>
 
                 <!--  TTS -->
-                <div role="tabpanel" id="text-to-speech" class='col-md-12 tab-pane fade'>
+                <div role="tabpanel" id="text-to-speech" class='col-md-12 tab-pane fade' style="display:none">
                     <div id="tts" class='panel panel-default'>
                         <div class='panel-heading'>
                             <strong>Produce Audio and Convert Text to Speech</strong>
@@ -174,7 +161,7 @@
                 </div>
 
                 <!-- Logs -->
-                <div role="tabpanel" id="logs" class="col-md-12 tab-pane fade">
+                <div role="tabpanel" id="logs" class="col-md-12 tab-pane fade" style="display:none">
                     <div class='panel panel-default'>
                         <div class="panel-heading">
                             <strong>JSON (Non-Binary) Raw Websockets Messages</strong>
@@ -183,24 +170,6 @@
                     </div>
                 </div>
 
-            </div>
-
-            <div class="container">
-                <div class="jumbotron">
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                        </div>
-                        <button type="button" id="asr_go" class="btn-block btn btn-danger btn-circle btn-xl">
-                        <i class="glyphicon glyphicon-heart"></i>
-                        </button>
-                        <h1>How are you doing today?</h1>
-                        <div class="form-group">
-                        <a href="" class="btn btn-danger btn-big col-lg-4">Family mode</a>
-                        <a href="" class="btn btn-danger btn-big col-lg-4">Friends mode</a>
-                        <a href="" class="btn btn-danger btn-big col-lg-4">Specific mode</a>
-                        </div>
-                    </form>
-                </div>
             </div>
 
         </div>
