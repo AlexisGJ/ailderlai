@@ -4,8 +4,8 @@ from watson_developer_cloud import PersonalityInsightsV2
 
 
 personality_insights = PersonalityInsightsV2(
-    username='YOUR SERVICE USERNAME',
-    password='YOUR SERVICE PASSWORD')
+    username='245c8319-f709-4a86-960c-0864b633ddac',
+    password='7MBXhiFtmKi1')
 
 with open(join(dirname(__file__), '../resources/personality.txt')) as \
         personality_text:
