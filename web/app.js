@@ -133,6 +133,7 @@ function sendSMSText() {
                         dLog(JSON.stringify(msg, null, 2), $asrDebug, true);
                     }
                 } else {
+                    console.log("hey bro1 : " + JSON.stringify(msg, null, 2));
                     dLog(JSON.stringify(msg, null, 2), $asrDebug);
                 }
                 $nluExecute.prop('disabled', false);
@@ -145,6 +146,7 @@ function sendSMSText() {
                         dLog(JSON.stringify(msg, null, 2), $nluDebug, true);
                     }
                 } else {
+                    console.log("hey bro2 : " + JSON.stringify(msg, null, 2));
                     dLog(JSON.stringify(msg, null, 2), $nluDebug);
                 }
                 $nluExecute.prop('disabled', false);
